@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<button id="getButton" onclick="get()">GET</button>
+	<pre id="getResponse"></pre>
+								
+	<script>
+		function get(){
+			$.ajax({
+				type: 'GET',
+				url: 'http://127.0.0.1:5500/submission.html',
+				dataType: 'json'
+			})
+			.done(function(data){
+				console.log('GET response:',JSON.stringify(data,"",2));
+				$('#getResponse').html(JSON.stringify(data, "", 2));
+			
+			})
+			.fail(function(jqXHR, textStatus, err){
+				console.log('AJAX error respons:', textStatus);
+			}) 
+		}
+	</script>
+	
+</body>
+
+<script scr="asset/js/jquery.js"></script>
+</html>
+ 
